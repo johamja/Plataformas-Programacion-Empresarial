@@ -1,12 +1,18 @@
+<script>
+    import Facebook from '$lib/icons/facebook.png';
+    import Instagram from '$lib/icons/instagram.png';
+    import Whatsapp from '$lib/icons/whatsapp.png';
+</script>
+
 <footer>
 
     <div class="cont_1">
         <h3>Tú tienda de confianza te espera</h3>
         <div>
             <h3>Síguenos</h3>
-            <img src="">
-            <img src="">
-            <img src="">
+            <a href="https://www.facebook.com/"><img src="{Facebook}" alt="Social"></a>
+            <a href="https://www.instagram.com/"><img src="{Instagram}" alt="Social"></a>
+            <a href="https://www.whatsapp.com/"><img src="{Whatsapp}" alt="Social"></a>
         </div>
     </div>
 
@@ -52,6 +58,11 @@
 
     .cont_3 {
         grid-column: 3;
+    }
+
+    img{
+        height: 20px;
+        width: 20px;
     }
 
 </style>
