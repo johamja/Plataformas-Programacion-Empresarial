@@ -1,12 +1,12 @@
 <script>
-    import Header from "../../components/Header.svelte";
-    import Footer from "../../components/Footer.svelte";
-
     import Input from "../../components/Input.svelte";
     import ButtonSocial from "../../components/ButtonSocial.svelte";
 </script>
 
-<Header/>
+<svelte:head>
+    <title>Information</title>
+    <meta name="description" content="Description" />
+</svelte:head>
 
 <div>
     <h2>Comunícate con nosotros </h2>
@@ -42,4 +42,4 @@
     </div>
 </div>
 
-<Footer/>
+
