@@ -19,8 +19,4 @@
 </div>
 
 <style>
-    main{
-        padding-left: var(--padding-page);
-        padding-right: var(--padding-page);
-    }
 </style>
