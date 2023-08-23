@@ -18,10 +18,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 15%;
+        width: 18%;
     }
  img{
-     --tamaño: 80%;
+     --tamaño: 60%;
      width: var(--tamaño);
  }
  h2, p{
@@ -32,5 +32,6 @@
  }
  p{
      text-align: justify;
+     font-size: 15px;
  }
 </style>
