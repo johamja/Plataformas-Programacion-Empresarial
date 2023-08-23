@@ -5,6 +5,8 @@
     import front_page from "$lib/img/home/front_page.png"
     import left_cover from "$lib/img/home/left_cover.png"
     import right_cover from "$lib/img/home/right_cover.png"
+    import left_cover_2 from "$lib/img/home/left_cover_2.png"
+    import right_cover_2 from "$lib/img/home/right_cover_2.png"
 
     // images from products
     import prod_1 from "$lib/img/product/prod_1.png"
@@ -59,17 +61,23 @@
 
 <Space/>
 
-<div>
-    <h2>Nosotros te ofrecemos</h2>
-    <div id="conteiner">
-        <Description/>
-        <Description/>
-        <Description/>
-        <Description/>
-        <Description/>
-        <Description/>
+<div class="cont_3">
+    <div class="img_cont_3_lef"><img alt="" src="{left_cover_2}"></div>
+    <div class="img_cont_3_rig"><img alt="" src="{right_cover_2}"></div>
+    <h2 class="title_cont">Nosotros te ofrecemos</h2>
+    <div class="conteiner_1">
+        <Description Characteristic="Calidad Artesanal" Description="En nuestra panadería, cada creación es una obra maestra artesanal. Cada pan, cada pastel, se elabora con amor y dedicación" />
+        <Description Characteristic="Ingredientes Frescos" Description="Nuestro secreto radica en la frescura de nuestros ingredientes. Utilizamos solo los más frescos y naturales para llevar hasta tu mesa la mejor calidad "/>
+        <Description Characteristic="Variedad de Productos" Description="En nuestra panadería, la variedad es nuestra especialidad. Desde panes tradicionales hasta pasteles exquisitos, tenemos algo para todos "/>
+    </div>
+    <div class="conteiner_2">
+        <Description Characteristic="Tradición Familiar" Description="Enraizados en una tradición familiar, nuestra panadería lleva décadas brindando sabor y calidez a la comunidad. ¡Únete a nuestra familia de clientes satisfechos!"/>
+        <Description Characteristic="Salud y Nutrición" Description="Tu salud es importante para nosotros. Ofrecemos opciones más saludables, como pan integral y sin gluten, para satisfacer tus necesidades nutricionales."/>
+        <Description Characteristic="Experiencia del Chef" Description="Nuestro chef pastelero, con años de experiencia, pone su corazón y alma en cada creación. Descubre el toque especial que solo él puede ofrecer."/>
     </div>
 </div>
+
+<Space/>
 
 <div>
     <h2>¿Cómo comprar?</h2>
@@ -147,4 +155,55 @@
             margin: 10px ;
         }
     }
+
+    .cont_3{
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        grid-template-rows: repeat(3,auto);
+
+        & .title_cont{
+            grid-column: 1/-1;
+            grid-row: 1;
+            text-align: center;
+            margin: 10px;
+            font-size: 40px;
+            font-weight: normal;
+        }
+        & .img_cont_3_lef{
+            display: flex;
+            grid-column: 1;
+            grid-row: 1/-1;
+            justify-content: left;
+            align-items: flex-start;
+
+            & img{
+                width: 37%;
+            }
+        }
+        & .img_cont_3_rig{
+            display: flex;
+            grid-column: 2;
+            grid-row: 1/-1;
+            justify-content: right;
+            align-items: flex-start;
+            & img{
+                width: 25%;
+            }
+        }
+
+        & .conteiner_1{
+            display: flex;
+            grid-column: 1/-1;
+            grid-row: 2;
+            justify-content: space-evenly;
+
+        }
+        & .conteiner_2{
+            display: flex;
+            grid-column: 1/-1;
+            grid-row: 3;
+            justify-content: space-evenly;
+        }
+    }
+
 </style>
