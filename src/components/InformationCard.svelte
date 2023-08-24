@@ -44,7 +44,8 @@
                 font-size: 96px;
             }
             & img{
-                width: 100px;
+                width: 60px;
+                margin: 10px;
             }
         }
         & .cont_2{
