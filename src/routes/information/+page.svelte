@@ -39,7 +39,7 @@
         <iframe
                 height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d360.78052336330694!2d-75.56628653708843!3d6.2493650725370795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f8896a73f3%3A0xc3a30926a6f6286d!2sPanader%C3%ADa%20y%20Pasteler%C3%ADa%20Astoria!5e0!3m2!1ses-419!2sco!4v1692655167350!5m2!1ses-419!2sco"
-                width="600" title="maps">
+                title="maps">
         </iframe>
     </div>
 </div>
@@ -50,10 +50,10 @@
     <h2 class="titulos">
         Puedes encontrarnos en tus redes sociales
     </h2>
-    <div>
-        <ButtonSocial/>
-        <ButtonSocial/>
-        <ButtonSocial/>
+    <div class="social">
+        <ButtonSocial Tipo="0"/>
+        <ButtonSocial Tipo="1"/>
+        <ButtonSocial Tipo="2"/>
     </div>
 </div>
 
@@ -116,6 +116,8 @@
             border-inline-end: none;
             border-inline-start: none;
             box-shadow: var(--sombra);
+            padding-left: 20px;
+            padding-right: 20px;
         }
     }
 
@@ -135,11 +137,27 @@
         }
     }
 
-    .container_2{
-       & iframe{
-           border-radius: 10px;
-           border: var(--color-A) 2px solid;
-       }
+    .container_2 {
+        & div {
+            width: 70%;
+        }
+
+        & iframe {
+            border-radius: 10px;
+            border: var(--color-A) 2px solid;
+            width: 100%;
+        }
+    }
+
+    .container_3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .social {
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
     }
 </style>
 
