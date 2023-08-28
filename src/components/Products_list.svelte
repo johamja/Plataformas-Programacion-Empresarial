@@ -54,7 +54,7 @@
 <style>
     .component{
         width: 290px;
-        height: 480px;
+        height: auto;
     }
     .container_1{
         width: auto;
