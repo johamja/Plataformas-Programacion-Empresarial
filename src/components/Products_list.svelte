@@ -15,25 +15,38 @@
         onclick = !onclick
     }
 
+    let status_css = false
+    if (status.toString() == 'exhausted'){
+        status_css = true
+    }
+
 </script>
 
 <div class="component">
     <div class="container_1">
         <div class="background_1">
                 <div class="sub_background">
-                    <div class="status indicator">
-                        <p>{status}</p>
-                    </div>
-                    <div class="discount indicator">
-                        <p>% {discount}</p>
-                    </div>
+                    {#if !status_css}
+                        <div class="status indicator">
+                            <p>{status}</p>
+                        </div>
+                        <div class="discount indicator">
+                            <p>% {discount}</p>
+                        </div>
+                    {/if}
+                    {#if !status_css}
                     <img src="{img}" alt="">
+                        {:else }
+                        <img style="filter: grayscale(1)" src="{img}" alt="">
+                        {/if}
                 </div>
         </div>
         <div class="background_2">
             <p class="name">{name}</p>
             <p class="price">$ {price}</p>
-            <button class="add">Añadir</button>
+            {#if !status_css}
+            <button class="add {status_css}" >Añadir</button>
+            {/if}
         </div>
     </div>
 </div>
@@ -49,6 +62,9 @@
         display: flex;
         flex-direction: column;
         margin: 15px;
+    }
+    .occult{
+        display: none;
     }
 
     .background_1{
