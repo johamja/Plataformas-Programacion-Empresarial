@@ -13,7 +13,7 @@
     <div>
         <a aria-current={$page.url.pathname === '/shop' ? 'page' : undefined} href="/shop"><h4 class="Shop">Tienda</h4>
         </a>
-        <img alt="shop_icon" src="{shop_logo}">
+        <a aria-current={$page.url.pathname === '/shop' ? 'page' : undefined} href="/shop/shoppingcart"><img alt="shop_icon" src="{shop_logo}"></a>
     </div>
 </header>
 
