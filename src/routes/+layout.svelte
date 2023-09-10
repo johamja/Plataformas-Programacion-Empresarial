@@ -6,11 +6,11 @@
     import '../styles/measures.css'
 </script>
 
-<div class="app">
+<div class="app" style="height: 100%">
 
     <Header />
 
-    <main>
+    <main style="height: 100%">
         <slot />
     </main>
 
@@ -19,4 +19,5 @@
 </div>
 
 <style>
+
 </style>
