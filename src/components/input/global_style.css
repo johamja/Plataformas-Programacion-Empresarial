@@ -1,0 +1,22 @@
+.Container_in {
+    display: flex;
+    flex-direction: column;
+
+    & p {
+        margin: 5px 0 5px 20px;
+        font-weight: normal;
+        font-size: 15px;
+    }
+
+    & input {
+        border-radius: 10px;
+        height: 54px;
+        border-block-start: none;
+        border-block-end: none;
+        border-inline-end: none;
+        border-inline-start: none;
+        box-shadow: var(--sombra);
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
