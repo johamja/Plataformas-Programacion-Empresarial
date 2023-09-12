@@ -65,10 +65,6 @@
                         font-style: normal;
                         font-weight: 400;
                     }
-
-                    & .text {
-                        color: var(--color-B);
-                    }
                 }
             }
 
