@@ -145,7 +145,7 @@
 
     <div class="container_4">
         <div class="sub_container_1">
-            <h2>Si unidades para la venta</h2>
+            <h2>Sin unidades para la venta</h2>
             <div class="list_products_stock">
                 {#each list_products_out_stock as item}
                     <Products_list Item={item}/>
