@@ -1,7 +1,10 @@
 <script>
+    import MediaQuery from 'svelte-media-query'
     import Input from "../../../components/Input.svelte";
     import img_log_in from '$lib/login/log_in.png'
     import Button from "../../../components/Button.svelte";
+    import Header from "../../../components/Header.svelte";
+    import Footer from "../../../components/big_size/Footer.svelte";
 
     function register() {
         // navigate("/login/register");
@@ -14,69 +17,86 @@
     <meta content="Description" name="description"/>
 </svelte:head>
 
-<div class="container">
-    <div class="container_1">
-        <div class="container_1_1">
-            <form action="" method="post">
-                <h1 class="title">Registro</h1>
-                <Input Tag="Nombre" Variant="Variant1"/>
-                <Input Tag="Apellido" Variant="Variant1"/>
-                <Input Tag="Correo" Variant="Variant1"/>
-                <Input Tag="Contraseña" Variant="Variant1"/>
-                <Button Function={() => {console.log('Continue con google')}} Text="Continúe con Google" Variant="Variant7"/>
-                <Button Function={register} Text="Registrarme" Variant="Variant1"/>
-            </form>
-
+<MediaQuery let:matches query="(min-width: 1440px)">
+    {#if matches}
+        <div class="container">
+            <div class="container_1">
+                <Header/>
+                <div class="container_1_1">
+                    <h1 class="title">Registrarme</h1>
+                    <form action="" method="post">
+                        <Input Label="Nombre" variant="Variant1"/>
+                        <Input Label="Apellido" variant="Variant1"/>
+                        <Input Label="Correo" variant="Variant1"/>
+                        <Input Label="Contraseña" variant="Variant1"/>
+                        <Button Function="{register}" Text="Registrarme" Variant="Variant1"/>
+                        <p>También puedes registrarte usado una de estas opciones</p>
+                        <Button Variant="platform"/>
+                    </form>
+                </div>
+                <Footer/>
+            </div>
+            <div class="container_2">
+                <img alt="img" src="{img_log_in}">
+            </div>
         </div>
-    </div>
-    <div class="container_2">
-        <img alt="" src="{img_log_in}">
-    </div>
-</div>
 
-<style>
-    .container {
-        z-index: 1;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        background: rgb(119, 101, 227);
-        background: linear-gradient(90deg, rgba(119, 101, 227, 1) 0%, rgba(255, 255, 255, 1) 100%);
-        height: 100%;
-
-        & .container_1 {
-            margin-left: var(--padding-page);
-            display: flex;
-            align-items: center;
-            width: 100%;
-
-            & .container_1_1 {
+        <style>
+            .container {
+                height: 100%;
                 display: flex;
-                flex-direction: column;
-                width: 67%;
+                justify-content: space-evenly;
+                flex-direction: row;
+                background: rgb(119, 101, 227);
+                background: linear-gradient(90deg, rgba(119, 101, 227, 1) 0%, rgba(255, 255, 255, 1) 100%);
 
-                & form {
+                & .container_1 {
+                    padding: 24px;
                     display: flex;
                     flex-direction: column;
+                    justify-content: space-between;
 
-                    & .title {
+                    & .container_1_1 {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 24px;
+                        align-items: center;
                         color: var(--color-B);
-                        font-size: 40px;
-                        font-style: normal;
-                        font-weight: 400;
+
+                        & form {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 24px;
+                            align-items: center;
+                        }
+                    }
+                }
+
+                & .container_2 {
+                    display: flex;
+                    align-items: flex-end;
+
+                    & img {
+                        height: 700px;
                     }
                 }
             }
+        </style>
+    {/if}
+</MediaQuery>
 
-        }
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            Header no disponible
+        </div>
+    {/if}
+</MediaQuery>
 
-        & .container_2 {
-            display: flex;
-            align-items: flex-end;
-
-            & img {
-                height: 95%;
-            }
-        }
-    }
-</style>
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            Header no disponible
+        </div>
+    {/if}
+</MediaQuery>
