@@ -1,156 +1,87 @@
 <script>
-    import Itemshoppingcart from "../../../components/Itemshoppingcart.svelte";
+    import MediaQuery from 'svelte-media-query'
     import Space from '../../../components/design/space.svelte'
-    import img_example from "$lib/img/product/prod_1.png";
 
-    let list_shopping_cart = [
-        {
-            name: 'Pan de yuca',
-            price: 12000,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 5,
-            count: 1
-        },
-        {
-            name: 'torta',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 10,
-            count: 1
-        },
-        {
-            name: 'biscocho',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 8,
-            count: 1
-        },
-        {
-            name: 'Pan de yuca',
-            price: 12000,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 5,
-            count: 1
-        }
-    ]
+    import {list_shopping_cart} from './List_ShoppingCart.js'
+    import Product from "../../../components/Product.svelte";
+    import Button from "../../../components/Button.svelte";
 </script>
 
 <svelte:head>
-    <title>Shop</title>
+    <title>Shop cart</title>
     <meta content="Description" name="description"/>
 </svelte:head>
 
-<div class="container">
-    <Space/>
-    <h1>Tu lista de compras</h1>
-
-    <div class="container_1">
-        {#each list_shopping_cart as item}
-            <Itemshoppingcart Item={item}/>
-        {/each}
-    </div>
-    <Space/>
-    <div class="container_2">
-        <div class="sub_container_1">
-            <button>Realizar pago</button>
+<!--Desktop-->
+<MediaQuery let:matches query="(min-width: 1440px)">
+    {#if matches}
+        <Space/>
+        <div class="container_1 container_flex">
+            <div class="container_1_1">
+                <h2>Tu lista de compras</h2>
+                <div class="list">
+                    {#each list_shopping_cart as item}
+                        <Product Variant="shopping cart" Item={item}/>
+                    {/each}
+                </div>
+            </div>
         </div>
-        <div class="sub_container_2">
-            <h1>Total del carrito</h1>
-            <table class="tabla_total">
-                <tbody>
-                <tr class="border">
-                    <td>Subtotal</td>
-                    <td>2324</td>
-                </tr>
-                <tr class="border">
-                    <td>Envió</td>
-                    <td>3242</td>
-                </tr>
-                <tr >
-                    <td>Total</td>
-                    <td>234</td>
-                </tr>
-                </tbody>
-            </table>
+
+        <Space/>
+
+        <div class="container_2 container_flex">
+            <div class="container_2_1">
+                <h2>Resumen de la compra</h2>
+                <p>Subtotal de la factura:</p>
+                <p>Descuento:</p>
+                <p>Total: </p>
+                <Button Variant="Variant2" Text="Pagar"/>
+            </div>
         </div>
-    </div>
-    <Space/>
-</div>
 
-<style>
-    .container {
-        margin: 0 var(--padding-page) 0 var(--padding-page);
-
-        & h1 {
-            text-align: center;
-        }
-    }
-
-    .container_2 {
-        background-color: var(--color-C);
-        margin: 20px;
-        padding: 20px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-
-        & .sub_container_1{
-            width: 45%;
-            & button {
-                border-radius: 10px;
-                background-color: var(--color-A);
-                width: 80%;
-                height: 50px;
-                color: var(--color-B);
-                border-block-start: none;
-                border-block-end: none;
-                border-inline-end: none;
-                border-inline-start: none;
-                box-shadow: var(--sombra);
-                margin: 15px;
-                text-align: center;
-                font-family: Courgette,serif;
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 400;
-
-            }
-        }
-
-        & .sub_container_2 {
-            width: 45%;
-
-            & .tabla_total {
-                border-radius: 10px;
-                border: 1px solid black;
-                width: 100%;
-                background-color: var(--color-B);
-                box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, 0.25);
-                & tr{
+        <Space/>
+        <style>
+            .container_1 {
+                & .container_1_1 {
+                    width: var(--tamaño_de_contenedor);
                     display: flex;
-                    justify-content: space-around;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 24px;
+
+                    & .list {
+                        width: inherit;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 24px;
+                    }
                 }
-
-                & .border {
-                    border-bottom: 1px solid black;
-                }
-
-                & td {
-                    padding: 10px;
-                }
-
-
             }
-        }
 
+            .container_2 {
+                & .container_2_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                }
+            }
+        </style>
+    {/if}
+</MediaQuery>
 
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            tablet
+        </div>
+    {/if}
+</MediaQuery>
 
-
-    }
-</style>
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            teléfono
+        </div>
+    {/if}
+</MediaQuery>
