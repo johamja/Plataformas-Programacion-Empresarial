@@ -10,7 +10,8 @@
 
     & input {
         border-radius: 10px;
-        height: 54px;
+        height: var(--alto_inputs);
+        width: var(--ancho_inputs);
         border-block-start: none;
         border-block-end: none;
         border-inline-end: none;

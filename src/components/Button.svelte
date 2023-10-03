@@ -1,39 +1,35 @@
 <script>
 
-    import Button_Variant1 from "./button/Button_Variant1.svelte";
-    import Button_Variant2 from "./button/Button_Variant2.svelte";
-    import Button_Variant3 from "./button/Button_Variant3.svelte";
-    import Button_Variant4 from "./button/Button_Variant4.svelte";
-    import Button_Variant5 from "./button/Button_Variant5.svelte";
-    import Button_Variant6 from "./button/Button_Variant6.svelte";
-    import Button_Variant7_Google from "./button/Button_Variant7_Google.svelte";
+    import Button_Variant1 from "./big_size/button/Button_Variant1.svelte";
+    import Button_Variant2 from "./big_size/button/Button_Variant2.svelte";
+    import Button_Variant3 from "./big_size/button/Button_Variant3.svelte";
+    import Button_Variant4 from "./big_size/button/Button_Variant4.svelte";
+    import Platform from "./big_size/button/Platform.svelte";
 
-    export let Text
-    export let Variant
-    export let Function
-    export const img = ""
-    let text = Text.toString()
-    let variant = Variant.toString()
-    let action_function = Function
-
-
+    export let Text = ""
+    export let Variant = ""
+    export const Img = ""
+    export let Function = () => {
+    }
+    export let Type = "button"
+    export let SocialNetwork = ""
 
 </script>
 
-{#if (variant === 'Variant1')}
-    <Button_Variant1 Function="{action_function}" Text="{text}"/>
-{:else if (variant === 'Variant2')}
-    <Button_Variant2 Text="{text}"/>
-{:else if (variant === 'Variant3')}
-    <Button_Variant3 Text="{text}"/>
-{:else if (variant === 'Variant4')}
-    <Button_Variant4 Text="{text}"/>
-{:else if (variant === 'Variant5')}
-    <Button_Variant5 Text="{text}"/>
-{:else if (variant === 'Variant6')}
-    <Button_Variant6 Text="{text}"/>
-{:else if (variant === 'Variant7')}
-    <Button_Variant7_Google Text="{text}"/>
-{:else }
-    <button>default</button>
+<!-- Botones simples -->
+{#if (Variant === 'Variant1')}
+    <Button_Variant1 Text="{Text}" Type="{Type}" Function="{Function}"/>
+{:else if (Variant === 'Variant2')}
+    <Button_Variant2 Text="{Text}" Type="{Type}" Function="{Function}"/>
+    <!-- Botones de plataformas -->
+{:else if (Variant === 'Variant3')}
+    <Button_Variant3 Text="{Text}" Type="{Type}"/>
+
+    <!-- Botones de redes sociales  -->
+{:else if (Variant === 'Variant4')}
+    <Button_Variant4 SocialNetwork="{SocialNetwork}"/>
+{:else if (Variant === 'platform')}
+    <Platform Type="{Type}"/>
+{:else}
+    <p>Default</p>
 {/if}

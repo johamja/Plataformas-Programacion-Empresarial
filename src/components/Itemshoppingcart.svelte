@@ -10,7 +10,7 @@
 <div class="container">
     <div class="container_1 flex_row">
         <div>
-            <img src={img} alt="{img.toString()}">
+            <img alt="{img.toString()}" src={img}>
         </div>
         <div class="flex_column center_vertical">
             <p class="name">{name}</p>
@@ -30,19 +30,22 @@
 </div>
 
 <style>
-    .flex_row{
+    .flex_row {
         display: flex;
         flex-direction: row;
     }
-    .flex_column{
+
+    .flex_column {
         display: flex;
         flex-direction: column;
     }
-    .center_vertical{
+
+    .center_vertical {
         justify-content: center;
     }
-    .container{
-        display: flex ;
+
+    .container {
+        display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
@@ -51,22 +54,25 @@
         border-radius: 10px;
     }
 
-    .container_1{
-        & img{
+    .container_1 {
+        & img {
             height: 110px;
             width: 110px;
             margin: 15px;
         }
-        & .name{
+
+        & .name {
             margin: 2px;
 
         }
-        & .price{
+
+        & .price {
             margin: 2px;
             font-weight: bold;
         }
     }
-    .container_2{
+
+    .container_2 {
         & button {
             border-radius: 10px;
             background-color: var(--color-B);
@@ -82,7 +88,7 @@
         }
     }
 
-    .container_3{
+    .container_3 {
         & button {
             border-radius: 10px;
             background-color: var(--color-A);

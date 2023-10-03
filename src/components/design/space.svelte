@@ -1,1 +1,1 @@
-<div style="height: var(--spaces)" ></div>
+<div style="height: var(--spacio_entre_contenedores)" ></div>

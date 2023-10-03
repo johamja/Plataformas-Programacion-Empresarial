@@ -1,37 +1,27 @@
 <script>
-    export let img
-    let src = img.toString()
-    export let Name
-    let name = Name.toString()
-    export let Description
-    let description = Description.toString()
+
+    import Shop from "./big_size/product/Shop.svelte";
+    import ShoppingCart from "./big_size/product/ShoppingCart.svelte";
+    import Bill from "./big_size/product/Bill.svelte";
+    import CRUD from "./big_size/product/CRUD.svelte"
+
+    export let Variant = ""
+    export let Item = ""
+    export let Function = () => {
+    }
+
 </script>
 
-<div>
-    <img src="{src}" alt="img_product">
-    <h2>{name}</h2>
-    <p>{description}</p>
-</div>
-
-<style>
-    div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 18%;
-    }
- img{
-     --tamaño: 60%;
-     width: var(--tamaño);
- }
- h2, p{
-    font-weight: normal;
- }
- h2{
-     text-align: center;
- }
- p{
-     text-align: justify;
-     font-size: 15px;
- }
-</style>
+{#if (Variant === 'home')}
+    <Shop Item="{Item}"/>
+{:else if (Variant === 'shop')}
+    <Shop Item="{Item}"/>
+{:else if (Variant === 'CRUD')}
+    <CRUD Item="{Item}"/>
+{:else if (Variant === 'shopping cart')}
+    <ShoppingCart Item="{Item}"/>
+{:else if (Variant === 'bill')}
+    <Bill Item="{Item}"/>
+{:else }
+    <p>Default</p>
+{/if}
