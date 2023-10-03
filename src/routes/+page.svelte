@@ -1,21 +1,21 @@
 <script>
-    import Product from "../components/Product.svelte"
-    import Description from "../components/Description.svelte"
+    import MediaQuery from 'svelte-media-query'
+
     import Space from "../components/design/space.svelte"
-    import InformationCard from "../components/InformationCard.svelte";
+    import BestSellingProduct from "../components/BestSellingProduct.svelte"
+    import NotableFeature from "../components/NotableFeature.svelte";
+    import CardInformation from "../components/CardInformation.svelte"
+
     import front_page from "$lib/img/home/front_page.png"
     import left_cover from "$lib/img/home/left_cover.png"
     import right_cover from "$lib/img/home/right_cover.png"
     import left_cover_2 from "$lib/img/home/left_cover_2.png"
     import right_cover_2 from "$lib/img/home/right_cover_2.png"
 
-    // images from products
-    import prod_1 from "$lib/img/product/prod_1.png"
-    import prod_2 from "$lib/img/product/prod_2.png"
-    import prod_3 from "$lib/img/product/prod_3.png"
-    import card_item_1 from "$lib/img/home/card_item_1.png"
-    import card_item_2 from "$lib/img/home/card_item_2.png"
-    import card_item_3 from "$lib/img/home/card_item_3.png"
+    import {List_BestSellingProduct} from './List_BestSellingProduct.js'
+    import {List_NotableFeature} from './List_NotableFeature.js'
+    import {List_Information} from './List_Information.js'
+
 </script>
 
 <svelte:head>
@@ -23,219 +23,169 @@
     <meta content="Description" name="description"/>
 </svelte:head>
 
-<div class="cont_1">
-    <div class="img_por_lef"><img alt="" src="{left_cover}"></div>
-    <div class="img_por_rig"><img alt="" src="{right_cover}"></div>
-    <div class="img_por">
-        <img alt="front_page" src="{front_page}">
-    </div>
-    <div class="text_por">
-        <h1>Panyucando</h1>
-        <h3>Sabor Auténtico en Cada Creación</h3>
-    </div>
-</div>
+<!--Desktop-->
+<MediaQuery let:matches query="(min-width: 1440px)">
+    {#if matches}
+        <Space/>
 
-<Space/>
+        <div class="container_1">
+            <div class="container_1_1">
+                <img alt="image_of_a_wheat_1" src="{left_cover}">
+            </div>
+            <div class="container_1_2">
+                <img alt="front_page" src="{front_page}">
+                <h1>Panyucando</h1>
+                <h3>Sabor Auténtico en Cada Creación</h3>
+            </div>
+            <div class="container_1_3">
+                <img alt="image_of_a_wheat_2" src="{right_cover}">
+            </div>
+        </div>
 
-<div class="cont_2">
-    <h2>Productos</h2>
-    <div class="cont_products">
-        <Product Description="Descubre la magia del pan de yuca. Cada bocado es una explosión de sabor y textura:
-        crujiente por fuera, suave por dentro. Libre de gluten y amado en todo el mundo, es la elección perfecta
-        para tus antojos. ¿Listo para un viaje culinario inolvidable? ¡Pruébalo hoy!"
-                 Name="Pan de yuca"
-                 img="{prod_1}"/>
+        <Space/>
 
-        <Product Description="¡Sumérgete en el placer celestial de nuestra torta exquisita!
-        Nuestra torta es una obra maestra de la repostería, cuidadosamente elaborada con los ingredientes más finos
-         y un toque de amor. Cada rebanada es un viaje de sabor que te transportará a un mundo de dulzura y deleite.
-          Disfruta de la decadencia en su máxima expresión. ¡Ordénala hoy y deja que nuestros sabores te conquisten!"
-                 Name="Torta"
-                 img="{prod_2}"/>
+        <div class="container_2 container_flex">
+            <div class="container_2_1">
+                <h2>Productos</h2>
+                <div class="list_container">
+                    {#each List_BestSellingProduct as item}
+                        <BestSellingProduct {...item}/>
+                    {/each}
+                </div>
+            </div>
+        </div>
 
-        <Product Description="¡Deléitate con la simplicidad y la dulzura irresistible de nuestro exquisito bizcocho!
-        Nuestro bizcocho es un verdadero placer para los sentidos. Con su textura esponjosa y su sabor delicadamente
-        dulce, cada bocado es una experiencia única. Perfecto para cualquier ocasión, desde el desayuno hasta el postre.
-        ¿Estás listo para probar la perfección en forma de bizcocho? ¡Haz tu pedido ahora y descubre un mundo de sabor
-        y suavidad en cada rebanada!"
-                 Name="Biscocho"
-                 img="{prod_3}"/>
-    </div>
-</div>
+        <Space/>
 
-<Space/>
+        <div class="container_3">
+            <div class="img_cont_3_lef"><img alt="" src="{left_cover_2}"></div>
+            <div class="container_3_1">
+                <h2>Nosotros te ofrecemos</h2>
+                <div class="List_container">
+                    {#each List_NotableFeature as item}
+                        <NotableFeature {...item}/>
+                    {/each}
+                </div>
+            </div>
+            <div class="img_cont_3_rig"><img alt="" src="{right_cover_2}"></div>
+        </div>
 
-<div class="cont_3">
-    <div class="img_cont_3_lef"><img alt="" src="{left_cover_2}"></div>
-    <div class="img_cont_3_rig"><img alt="" src="{right_cover_2}"></div>
-    <h2 class="title_cont">Nosotros te ofrecemos</h2>
-    <div class="container_1">
-        <Description Characteristic="Calidad Artesanal" Description="En nuestra panadería, cada creación es una obra maestra artesanal. Cada pan, cada pastel, se elabora con amor y dedicación" />
-        <Description Characteristic="Ingredientes Frescos" Description="Nuestro secreto radica en la frescura de nuestros ingredientes. Utilizamos solo los más frescos y naturales para llevar hasta tu mesa la mejor calidad "/>
-        <Description Characteristic="Variedad de Productos" Description="En nuestra panadería, la variedad es nuestra especialidad. Desde panes tradicionales hasta pasteles exquisitos, tenemos algo para todos "/>
-    </div>
-    <div class="container_2">
-        <Description Characteristic="Tradición Familiar" Description="Enraizados en una tradición familiar, nuestra panadería lleva décadas brindando sabor y calidez a la comunidad. ¡Únete a nuestra familia de clientes satisfechos!"/>
-        <Description Characteristic="Salud y Nutrición" Description="Tu salud es importante para nosotros. Ofrecemos opciones más saludables, como pan integral y sin gluten, para satisfacer tus necesidades nutricionales."/>
-        <Description Characteristic="Experiencia del Chef" Description="Nuestro chef pastelero, con años de experiencia, pone su corazón y alma en cada creación. Descubre el toque especial que solo él puede ofrecer."/>
-    </div>
-</div>
+        <Space/>
 
-<Space/>
+        <div class="container_4 container_flex">
+            <div class="container_4_1">
+                <h2>¿Cómo comprar?</h2>
+                <div class="List_container">
+                    {#each List_Information as item}
+                        <CardInformation {...item}/>
+                    {/each}
+                </div>
+            </div>
+        </div>
 
-<div class="cont_4">
-    <h2>¿Cómo comprar?</h2>
-    <div class="container_1" style="display: flex; justify-content: space-evenly">
-        <InformationCard Number="1" Image="{card_item_1}" Title="¡Selecciona tu Tesoro!"
-                         Description="En esta emocionante etapa, explorarás nuestro catálogo de productos cuidadosamente
-                          seleccionados. ¡Deja que tu imaginación vuele y elige los artículos que harán que tu día sea
-                          extraordinario!"/>
+        <Space/>
 
-        <InformationCard Number="2" Image="{card_item_2}" Title="¡Asegura tu Botín!"
-                         Description="Una vez que hayas encontrado los tesoros que te hacen sonreír, es hora de realizar
-                          el pago. ¡Hacemos que sea rápido y seguro para que puedas pasar menos tiempo en el proceso de
-                          compra y más tiempo disfrutando de tus nuevas adquisiciones!"/>
+        <style>
+            .container_1 {
+                display: flex;
+                justify-content: space-between;
 
-        <InformationCard Number="3" Image="{card_item_3}" Title="Prepara tu Emoción"
-                         Description="Ahora, la anticipación comienza a construirse. Mientras esperas ansiosamente,
-                         nuestro equipo trabaja arduamente para preparar tu pedido con cuidado y cariño. Te mantenemos
-                         informado para que sepas exactamente cuándo tu tesoro estará en tus manos."/>
-    </div>
-</div>
+                & .container_1_1, & .container_1_3 {
+                    & img {
+                        width: 400px;
+                    }
+                }
 
-<Space/>
+                & .container_1_2 {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 17px;
 
-<style>
-    .cont_1 {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        grid-template-rows: repeat(3, auto);
-
-        & .text_por {
-            grid-column: 1 / -1;
-            grid-row: 2;
-            text-align: center;
-        }
-
-        & .img_por {
-            grid-column: 1 / -1;
-            grid-row: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            & img {
-                width: 30%;
-                padding: 50px
+                    & img {
+                        width: 370px;
+                    }
+                }
             }
-        }
 
-        & .img_por_lef, .img_por_rig {
-            display: flex;
-            align-items: center;
+            .container_2 {
+                & .container_2_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 24px;
 
-            & img {
-                width: 55%;
+                    & .list_container {
+                        width: inherit;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
             }
-        }
 
-        & .img_por_lef {
-            grid-column: 1;
-            grid-row: 1 / 3;
-            justify-content: left;
-        }
 
-        & .img_por_rig {
-            grid-column: 2;
-            grid-row: 1 / 3;
-            justify-content: right;
-        }
+            .container_3 {
+                display: flex;
+                justify-content: space-between;
 
-        & h1 {
-            font-size: 96px;
-            margin: 0;
-        }
+                & .img_cont_3_lef, & .img_cont_3_rig {
+                    & img {
+                        width: 100px;
+                    }
+                }
 
-        & h1, & h3 {
-            font-weight: normal;
-        }
-    }
+                & .container_3_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 24px;
 
-    .cont_2{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        & .cont_products{
-            display: flex;
-            justify-content: space-evenly;
-        }
-
-        & h2{
-            font-size: 40px;
-            font-weight: normal;
-            margin: 10px ;
-        }
-    }
-
-    .cont_3{
-        display: grid;
-        grid-template-columns: repeat(2,auto);
-        grid-template-rows: repeat(3,auto);
-
-        & .title_cont{
-            grid-column: 1/-1;
-            grid-row: 1;
-            text-align: center;
-            margin: 10px;
-            font-size: 40px;
-            font-weight: normal;
-        }
-        & .img_cont_3_lef{
-            display: flex;
-            grid-column: 1;
-            grid-row: 1/-1;
-            justify-content: left;
-            align-items: flex-start;
-
-            & img{
-                width: 37%;
+                    & .List_container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        gap: 24px;
+                    }
+                }
             }
-        }
-        & .img_cont_3_rig{
-            display: flex;
-            grid-column: 2;
-            grid-row: 1/-1;
-            justify-content: right;
-            align-items: flex-start;
-            & img{
-                width: 25%;
+
+            .container_4 {
+                & .container_4_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 24px;
+
+                    & .List_container {
+                        width: inherit;
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 24px;
+                    }
+
+                }
             }
-        }
 
-        & .container_1{
-            display: flex;
-            grid-column: 1/-1;
-            grid-row: 2;
-            justify-content: space-evenly;
+        </style>
+    {/if}
+</MediaQuery>
 
-        }
-        & .container_2{
-            display: flex;
-            grid-column: 1/-1;
-            grid-row: 3;
-            justify-content: space-evenly;
-        }
-    }
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            tablet
+        </div>
+    {/if}
+</MediaQuery>
 
-    .cont_4{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        & h2{
-            font-size: 40px;
-            font-weight: normal;
-        }
-    }
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            teléfono
+        </div>
+    {/if}
+</MediaQuery>
 
-</style>
