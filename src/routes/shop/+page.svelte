@@ -1,104 +1,12 @@
 <script>
-    // import from components
+    import MediaQuery from 'svelte-media-query'
+
+    import '../../styles/colors.css'
     import Space from '../../components/design/space.svelte'
-    import Products_list from "../../components/Products_list.svelte";
+    import Product from "../../components/Product.svelte";
 
-    // import from styles
-    import '../../styles/color.css'
-
-    // import from lib/products
-    import img_example from '$lib/img/product/prod_1.png'
-
-    // list the products
-    let list_products_stock = [
-        {
-            name: 'Pan de yuca',
-            price: 12000,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 5
-        },
-        {
-            name: 'torta',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 10
-        },
-        {
-            name: 'biscocho',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 8
-        },
-        {
-            name: 'Pan de yuca',
-            price: 12000,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 5
-        },
-        {
-            name: 'torta',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 10
-        },
-        {
-            name: 'biscocho',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 8
-        },
-        {
-            name: 'Pan de yuca',
-            price: 12000,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 5
-        },
-        {
-            name: 'torta',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 10
-        },
-        {
-            name: 'biscocho',
-            price: 212,
-            img: img_example,
-            status: 'Nuevo',
-            discount: 8
-        }
-]
-
-    let list_products_out_stock = [
-        {
-            name: 'Pan de yuca',
-            price: 12000,
-            img: img_example,
-            status: 'exhausted',
-            discount: 5
-        },
-        {
-            name: 'torta',
-            price: 212,
-            img: img_example,
-            status: 'exhausted',
-            discount: 10
-        },
-        {
-            name: 'biscocho',
-            price: 212,
-            img: img_example,
-            status: 'exhausted',
-            discount: 8
-        }
-    ]
+    import {list_products_stock} from './List_ProductsStock.js'
+    import {list_products_out_stock} from './List_ProductsOutStock.js'
 </script>
 
 <svelte:head>
@@ -106,163 +14,181 @@
     <meta content="Description" name="description"/>
 </svelte:head>
 
-<div>
+<!--Desktop-->
+<MediaQuery let:matches query="(min-width: 1440px)">
+    {#if matches}
+        <Space/>
 
-    <Space/>
-
-    <div class="container_1 flex_center">
-        <div class="sub_container_1">
-            <div class="publisher_1 publisher_root">
-            </div>
-            <div class="publisher_2 publisher_root"></div>
-            <div class="publisher_3 publisher_root"></div>
-            <div class="publisher_4 publisher_root"></div>
-        </div>
-    </div>
-
-    <Space/>
-
-    <div class="container_2">
-        <div class="sub_container_1">
-            <h2>los recién llegados </h2>
-            <div class="list_products_stock">
-                {#each list_products_stock as item}
-                    <Products_list Item={item}/>
-                {/each}
+        <div class="container_1 container_flex">
+            <div class="container_1_1">
+                <div class="publisher_1 publisher_root"></div>
+                <div class="publisher_2 publisher_root"></div>
+                <div class="publisher_3 publisher_root"></div>
+                <div class="publisher_4 publisher_root"></div>
             </div>
         </div>
-    </div>
 
-    <Space/>
+        <Space/>
 
-    <div class="container_3">
-        <div class="sub_container_1">
-            <div class="publisher_1 publisher_root"></div>
-        </div>
-    </div>
-
-    <Space/>
-
-    <div class="container_4">
-        <div class="sub_container_1">
-            <h2>Sin unidades para la venta</h2>
-            <div class="list_products_stock">
-                {#each list_products_out_stock as item}
-                    <Products_list Item={item}/>
-                {/each}
+        <div class="container_2 container_flex">
+            <div class="container_2_1">
+                <h2>los recién llegados </h2>
+                <div class="list">
+                    {#each list_products_stock as item}
+                        <Product Variant="shop" Item={item}/>
+                    {/each}
+                </div>
             </div>
         </div>
-    </div>
 
-    <Space/>
+        <Space/>
 
-    <div class="container_5">
-        <div class="sub_container_1">
-            <div class="publisher_1 publisher_root"></div>
+        <div class="container_3 container_flex">
+            <div class="container_3_1">
+                <div class="publisher_1 publisher_root"></div>
+            </div>
         </div>
-    </div>
-    <Space/>
-</div>
 
-<style>
-    .flex_center {
-        display: flex;
-        justify-content: space-evenly;
-    }
+        <Space/>
 
-    .publisher_root {
-        background: var(--color-C);
-        border-radius: 10px;
-    }
+        <div class="container_4 container_flex">
+            <div class="container_4_1">
+                <h2>Sin unidades para la venta</h2>
+                <div class="list">
+                    {#each list_products_out_stock as item}
+                        <Product Variant="shop" Item={item}/>
+                    {/each}
+                </div>
+            </div>
+        </div>
 
-    .container_1 {
-        & .sub_container_1 {
-            display: grid;
-            grid-template-columns: repeat(4, auto);
-            grid-template-rows: repeat(2, auto);
-            width: 80%;
-            height: 470px;
-            grid-column-gap: 10px;
-            grid-row-gap: 10px;
-            & .publisher_1 {
-                grid-column: 1/3;
-                grid-row: 1/3;
+        <Space/>
+
+        <div class="container_5 container_flex">
+            <div class="container_5_1">
+                <div class="publisher_1 publisher_root"></div>
+            </div>
+        </div>
+        <Space/>
+
+        <style>
+            .container_1 {
+                & .container_1_1 {
+                    display: grid;
+                    grid-template-columns: repeat(4, auto);
+                    grid-template-rows: repeat(2, auto);
+                    width: var(--tamaño_de_contenedor);
+                    height: 470px;
+                    grid-column-gap: 10px;
+                    grid-row-gap: 10px;
+
+                    & .publisher_root {
+                        background-color: var(--color-C);
+                        border-radius: var(--redondeo_elementos);
+                    }
+
+                    & .publisher_1 {
+                        grid-column: 1/3;
+                        grid-row: 1/3;
+                    }
+
+                    & .publisher_2 {
+                        grid-column: 3/5;
+                        grid-row: 1;
+                    }
+
+                    & .publisher_3 {
+                        grid-column: 3;
+                        grid-row: 2;
+                    }
+
+                    & .publisher_4 {
+                        grid-column: 4;
+                        grid-row: 2;
+                    }
+                }
             }
 
-            & .publisher_2 {
-                grid-column: 3/5;
-                grid-row: 1;
+            .container_2 {
+                & .container_2_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 24px;
+
+                    & .list {
+                        width: inherit;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-evenly;
+                        gap: 24px;
+                    }
+                }
             }
 
-            & .publisher_3 {
-                grid-column: 3;
-                grid-row: 2;
+            .container_3 {
+                & .container_3_1 {
+                    width: var(--tamaño_de_contenedor);
+
+                    & .publisher_1 {
+                        width: 100%;
+                        height: 500px;
+                        background-color: var(--color-C);
+                        border-radius: var(--redondeo_elementos);
+                    }
+                }
             }
 
-            & .publisher_4 {
-                grid-column: 4;
-                grid-row: 2;
+            .container_4 {
+                & .container_4_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 24px;
+
+                    & .list {
+                        width: inherit;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-evenly;
+                        gap: 24px;
+                    }
+                }
             }
-        }
 
-    }
+            .container_5 {
+                & .container_5_1 {
+                    width: var(--tamaño_de_contenedor);
 
-    .container_2 {
-        margin: 0 var(--padding-page) 0 var(--padding-page);
-        & .sub_container_1 {
-            & .list_products_stock{
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-evenly;
+                    & .publisher_1 {
+                        width: 100%;
+                        height: 500px;
+                        background-color: var(--color-C);
+                        border-radius: var(--redondeo_elementos);
+                    }
+                }
             }
-            & h2{
-                text-align: center;
-                font-weight: normal;
-                font-size: 40px;
-            }
-        }
 
-    }
+        </style>
+    {/if}
+</MediaQuery>
 
-    .container_3 {
-        margin: 0 var(--padding-page) 0 var(--padding-page);
-        & .sub_container_1{
-            & .publisher_1{
-                width: 100%;
-                height: 500px;
-                background-color: var(--color-C);
-            }
-        }
-    }
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            tablet
+        </div>
+    {/if}
+</MediaQuery>
 
-    .container_4 {
-        margin: 0 var(--padding-page) 0 var(--padding-page);
-        & .sub_container_1 {
-            & .list_products_stock{
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-evenly;
-            }
-            & h2{
-                text-align: center;
-                font-weight: normal;
-                font-size: 40px;
-            }
-        }
-
-    }
-
-    .container_5 {
-        margin: 0 var(--padding-page) 0 var(--padding-page);
-        & .sub_container_1{
-            & .publisher_1{
-                width: 100%;
-                height: 500px;
-                background-color: var(--color-C);
-            }
-        }
-    }
-
-</style>
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            teléfono
+        </div>
+    {/if}
+</MediaQuery>
