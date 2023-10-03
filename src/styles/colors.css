@@ -1,0 +1,21 @@
+:root {
+    /* Paleta de colores*/
+    --color-A: #7765E3;
+    --color-B: #FFFFFF;
+    --color-C: #E6E8E6;
+    --color-D: #668F80;
+    --color-E: #FFC368;
+    --color-text: rgba(0, 0, 0, 0.85);
+
+    /* Sombras */
+    --sombra: 0px 4px 4px rgb(0 0 0 / 25%);
+
+}
+
+/* Degradados */
+.degradado_A {
+    background: -webkit-linear-gradient(left top, var(--color-A), var(--color-text));
+    background: linear-gradient(to bottom right, var(--color-A), var(--color-text));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

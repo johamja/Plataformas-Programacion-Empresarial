@@ -1,6 +1,22 @@
-:root{
-    --padding-page: 100px;
-    --spaces: 60px;
+:root {
+    @media (min-width: 1440px) {
+        /* Tamaño de espacios */
+        --spacio_entre_contenedores: 60px;
 
-    --padding-footer-top-bottom: 40px;
+        /* Tamaño de los contenedores */
+        --tamaño_de_contenedor: 1000px;
+
+        /* Tamaño de las columnas */
+        --tamaño_de_columna: 310px;
+
+        --redondeo_elementos: 16px;
+
+        --ancho_inputs: 410px;
+
+        --alto_inputs: 45px;
+
+        --ancho_botones: 450px;
+
+        --alto_botones: 52px;
+    }
 }
