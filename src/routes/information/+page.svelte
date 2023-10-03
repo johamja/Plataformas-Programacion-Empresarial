@@ -1,6 +1,9 @@
 <script>
-    import ButtonSocial from "../../components/ButtonSocial.svelte";
+    import MediaQuery from 'svelte-media-query'
+
     import Space from "../../components/design/space.svelte"
+    import Button from "../../components/Button.svelte";
+    import Input from "../../components/Input.svelte";
 </script>
 
 <svelte:head>
@@ -8,157 +11,134 @@
     <meta content="Description" name="description"/>
 </svelte:head>
 
-<div class="container_1 flex">
-    <h2 class="titulos">Comunícate con nosotros </h2>
-    <form action="" method="post">
-        <div class="">
-            <label class="Input1">
-                <p>Nombre</p>
-                <input id="name" name="Nombre" type="text">
-            </label>
-            <label class="Input1">
-                <p>Correo electronico</p>
-                <input id="email" name="Correo electronico" type="email">
-            </label>
+<!--Desktop-->
+<MediaQuery let:matches query="(min-width: 1440px)">
+    {#if matches}
+        <Space/>
+
+        <div class="container_1 container_flex">
+            <div class="container_1_1">
+                <h2>Comunícate con nosotros </h2>
+                <form action="?/not_authenticated" method="POST">
+                    <div>
+                        <Input variant="Variant3" Label="Nombre" Name="name" Type="text"/>
+                        <Input variant="Variant3" Label="Correo" Name="email" Type="text"/>
+                        <Input variant="Variant3" Label="Descricion" Name="description" Type="text"/>
+                    </div>
+                    <Button Type="submit" Text="Enviar" Variant="Variant2"/>
+                </form>
+                <form action="?/authenticated" method="POST">
+                    <div>
+                        <Input variant="Variant3" Label="Descricion" Name="description" Type="text"/>
+                    </div>
+                    <Button Type="submit" Text="Enviar" Variant="Variant2"/>
+                </form>
+            </div>
         </div>
-        <div>
-            <label class="Input1">
-                <p>Que estas buscando?</p>
-                <input id="Description" name="Que estas buscando?" type="text">
-            </label>
+
+        <Space/>
+
+        <div class="container_2 container_flex">
+            <div class="container_2_1">
+                <h2>Puedes encontrarnos en Cra. 47 #50-75 Loca 105 </h2>
+                <iframe
+                        height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d360.78052336330694!2d-75.56628653708843!3d6.2493650725370795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f8896a73f3%3A0xc3a30926a6f6286d!2sPanader%C3%ADa%20y%20Pasteler%C3%ADa%20Astoria!5e0!3m2!1ses-419!2sco!4v1692655167350!5m2!1ses-419!2sco"
+                        title="maps">
+                </iframe>
+            </div>
         </div>
-        <button type="submit">Enviar</button>
-    </form>
-</div>
 
-<Space/>
+        <Space/>
 
-<div class="container_2 flex">
-    <h2 class="titulos">Puedes encontrarnos en Cra. 47 #50-75 Loca 105 </h2>
-    <div>
-        <iframe
-                height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d360.78052336330694!2d-75.56628653708843!3d6.2493650725370795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f8896a73f3%3A0xc3a30926a6f6286d!2sPanader%C3%ADa%20y%20Pasteler%C3%ADa%20Astoria!5e0!3m2!1ses-419!2sco!4v1692655167350!5m2!1ses-419!2sco"
-                title="maps">
-        </iframe>
-    </div>
-</div>
+        <div class="container_3 container_flex">
+            <div class="container_3_1">
+                <h2>Puedes encontrarnos en tus redes sociales</h2>
+                <div class="container_3_1_1">
+                    <Button Variant="Variant4" SocialNetwork="facebook"/>
+                    <Button Variant="Variant4" SocialNetwork="instagram"/>
+                    <Button Variant="Variant4" SocialNetwork="whatsapp"/>
+                </div>
+            </div>
+        </div>
 
-<Space/>
+        <Space/>
 
-<div class="container_3 flex">
-    <h2 class="titulos">
-        Puedes encontrarnos en tus redes sociales
-    </h2>
-    <div class="social">
-        <ButtonSocial Tipo="0"/>
-        <ButtonSocial Tipo="1"/>
-        <ButtonSocial Tipo="2"/>
-    </div>
-</div>
+        <style>
+            .container_1 {
+                & .container_1_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    align-items: center;
 
-<Space/>
+                    & form {
+                        width: inherit;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 24px;
+                        align-items: center;
 
+                        & div {
+                            width: inherit;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-around;
+                            row-gap: 24px;
+                        }
+                    }
+                }
+            }
 
-<style>
+            .container_2 {
+                & .container_2_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    align-items: center;
 
-    .titulos {
-        font-size: 20px;
-        font-weight: normal;
-    }
+                    & iframe {
+                        width: inherit;
+                        border-radius: var(--redondeo_elementos);
+                        border: 2px solid var(--color-A);
+                    }
+                }
+            }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+            .container_3 {
+                & .container_3_1 {
+                    width: var(--tamaño_de_contenedor);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    align-items: center;
 
-        & div {
-            width: 100%;
-            margin: 15px;
-            display: flex;
-            justify-content: space-evenly;
-        }
+                    & .container_3_1_1 {
+                        width: inherit;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+            }
+        </style>
+    {/if}
+</MediaQuery>
 
-        & button {
-            border-radius: 10px;
-            background-color: var(--color-A);
-            width: 40%;
-            height: 40px;
-            color: var(--color-B);
-            border-block-start: none;
-            border-block-end: none;
-            border-inline-end: none;
-            border-inline-start: none;
-            box-shadow: var(--sombra);
-            margin: 15px;
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            tablet
+        </div>
+    {/if}
+</MediaQuery>
 
-        }
-    }
-
-    .Input1 {
-        display: flex;
-        flex-direction: column;
-        width: 40%;
-
-        & p {
-            margin: 5px 0 5px 20px;
-            font-weight: normal;
-            font-size: 15px;
-        }
-
-        & input {
-            border-radius: 10px;
-            border-color: var(--color-C);
-            height: 40px;
-            background-color: var(--color-C);
-            border-block-start: none;
-            border-block-end: none;
-            border-inline-end: none;
-            border-inline-start: none;
-            box-shadow: var(--sombra);
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    }
-
-    .flex {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    form {
-        width: 80%;
-    }
-
-    form {
-        & div {
-            display: flex;
-        }
-    }
-
-    .container_2 {
-        & div {
-            width: 70%;
-        }
-
-        & iframe {
-            border-radius: 10px;
-            border: var(--color-A) 2px solid;
-            width: 100%;
-        }
-    }
-
-    .container_3 {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .social {
-        display: flex;
-        justify-content: space-between;
-        width: 70%;
-    }
-</style>
-
+<MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
+    {#if matches}
+        <div class="root tablet">
+            teléfono
+        </div>
+    {/if}
+</MediaQuery>
 
