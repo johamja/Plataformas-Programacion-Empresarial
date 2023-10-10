@@ -6,9 +6,31 @@
     import Header from "../../../components/Header.svelte";
     import Footer from "../../../components/big_size/Footer.svelte";
 
-    function register() {
+     /**
+     * @type {String}
+     */
+     let correo ;
+     /**
+     * @type {String}
+     */
+     let contraseña;
+  
+    async function  register() {
+        console.log(contraseña,correo)
         // navigate("/login/register");
+        await fetch('http://localhost:3000/login/register', {
+        method: 'POST',
+        body: JSON.stringify({
+        correo,
+        contraseña,
+    }),
+    
+  });
+     
+
+        
         window.location.href = '/login/register';
+   
     }
 </script>
 
@@ -27,9 +49,9 @@
                     <form action="" method="post">
                         <Input Label="Nombre" variant="Variant1"/>
                         <Input Label="Apellido" variant="Variant1"/>
-                        <Input Label="Correo" variant="Variant1"/>
-                        <Input Label="Contraseña" variant="Variant1"/>
-                        <Button Function="{register}" Text="Registrarme" Variant="Variant1"/>
+                        <Input Label="Correo" variant="Variant1" bind:Value={correo} />
+                        <Input Label="Contraseña" variant="Variant1" bind:Value={contraseña}/>
+                        <Button Function="{ register}" Text="Registrarme" Variant="Variant1" on:click="{register}"/>
                         <p>También puedes registrarte usado una de estas opciones</p>
                         <Button Variant="platform"/>
                     </form>
