@@ -6,32 +6,37 @@
     import Header from "../../../components/Header.svelte";
     import Footer from "../../../components/big_size/Footer.svelte";
 
-     /**
-     * @type {String}
-     */
-     let correo ;
-     /**
-     * @type {String}
-     */
-     let contraseña;
-  
-    async function  register() {
-        console.log(contraseña,correo)
-        // navigate("/login/register");
-        await fetch('http://localhost:3000/login/register', {
-        method: 'POST',
-        body: JSON.stringify({
-        correo,
-        contraseña,
-    }),
-    
-  });
-     
+    let correo = 'szs';
+     let contraseña = 'melo ';
+     let responseMessage = ''; // Variable para almacenar la respuesta del servidor
 
-        
-        window.location.href = '/login/register';
-   
+async function register() {
+    
+    alert(correo);
+    try {
+        const response = await fetch('http://localhost:3000/login/register', {
+            method: 'POST',
+            /*headers: {
+                'Content-Type': 'application/json'
+            },*/
+            body: JSON.stringify({
+                "correo": correo,
+                "contraseña": contraseña,
+            }),
+        });
+
+        const data = await response.json(); // Parsea la respuesta como JSON
+        responseMessage = JSON.stringify(data); // Almacena la respuesta en la variable
+    } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        responseMessage = `Error: ${error}`;
     }
+
+    // Puedes mostrar la respuesta en una alerta o en algún elemento de tu página
+    alert(responseMessage+" "+ correo + " " + contraseña );
+
+    window.location.href = '/login/register';
+}
 </script>
 
 <svelte:head>
@@ -50,8 +55,8 @@
                         <Input Label="Nombre" variant="Variant1"/>
                         <Input Label="Apellido" variant="Variant1"/>
                         <Input Label="Correo" variant="Variant1" bind:Value={correo} />
-                        <Input Label="Contraseña" variant="Variant1" bind:Value={contraseña}/>
-                        <Button Function="{ register}" Text="Registrarme" Variant="Variant1" on:click="{register}"/>
+                        <Input Label="Contraseña" variant="Variant1" bind:Value= {contraseña}/>
+                        <Button Function="{register}" Text="Registrarme" Variant="Variant1" on:click="{register}"/>
                         <p>También puedes registrarte usado una de estas opciones</p>
                         <Button Variant="platform"/>
                     </form>
