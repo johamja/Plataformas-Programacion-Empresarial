@@ -6,35 +6,11 @@
     import Header from "../../../components/Header.svelte";
     import Footer from "../../../components/big_size/Footer.svelte";
 
-    let correo = 'szs';
-     let contraseña = 'melo ';
+    
      let responseMessage = ''; // Variable para almacenar la respuesta del servidor
 
 async function register() {
     
-    alert(correo);
-    try {
-        const response = await fetch('http://localhost:3000/login/register', {
-            method: 'POST',
-            /*headers: {
-                'Content-Type': 'application/json'
-            },*/
-            body: JSON.stringify({
-                "correo": correo,
-                "contraseña": contraseña,
-            }),
-        });
-
-        const data = await response.json(); // Parsea la respuesta como JSON
-        responseMessage = JSON.stringify(data); // Almacena la respuesta en la variable
-    } catch (error) {
-        console.error('Error al registrar usuario:', error);
-        responseMessage = `Error: ${error}`;
-    }
-
-    // Puedes mostrar la respuesta en una alerta o en algún elemento de tu página
-    alert(responseMessage+" "+ correo + " " + contraseña );
-
     window.location.href = '/login/register';
 }
 </script>
@@ -51,12 +27,12 @@ async function register() {
                 <Header/>
                 <div class="container_1_1">
                     <h1 class="title">Registrarme</h1>
-                    <form action="" method="post">
-                        <Input Label="Nombre" variant="Variant1"/>
-                        <Input Label="Apellido" variant="Variant1"/>
-                        <Input Label="Correo" variant="Variant1" bind:Value={correo} />
-                        <Input Label="Contraseña" variant="Variant1" bind:Value= {contraseña}/>
-                        <Button Function="{register}" Text="Registrarme" Variant="Variant1" on:click="{register}"/>
+                    <form action="?/not_authenticated" method="post">
+                        <Input Name="Nombre" Label="Nombre" variant="Variant1"/>
+                        <Input Name="Apellido"  Label="Apellido" variant="Variant1"/>
+                        <Input Name= "Correo" Label="Correo" variant="Variant1" Type="text" />
+                        <Input Name="Contraseña"Label="Contraseña" variant="Variant1" Type= "text"/>
+                        <Button Type="submit"Text="Registrarme" Variant="Variant1" on:click="{register}"/>
                         <p>También puedes registrarte usado una de estas opciones</p>
                         <Button Variant="platform"/>
                     </form>
