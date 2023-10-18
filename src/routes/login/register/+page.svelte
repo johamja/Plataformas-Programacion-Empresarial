@@ -11,7 +11,7 @@
 
 async function register() {
     
-    window.location.href = '/login/register';
+    window.location.href = '/login';
 }
 </script>
 
