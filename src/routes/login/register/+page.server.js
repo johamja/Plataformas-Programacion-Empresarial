@@ -25,8 +25,9 @@ export const actions = {
                 },
                 body: JSON.stringify(formData)
             });
-    
-            return { success: true };
+
+            
+            return { success: true};
         } catch (error) {
             console.error('Error en la solicitud fetch:', error);
             return { success: false, error: 'Error en la solicitud fetch' };
