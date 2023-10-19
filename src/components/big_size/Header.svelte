@@ -1,4 +1,6 @@
+
 <script>
+
     //Librerias necesarias
     import {page} from "$app/stores";
     // recursos
@@ -6,7 +8,7 @@
     import profile_color_a from '$lib/icons/header/profile_color_a.png';
     import shoppingcart from '$lib/icons/header/shoppingcart.png';
     import shoppingcart_color_a from '$lib/icons/header/shoppingcart_color_a.png';
-
+    import user from '../../UserStore.js'
     $: rute = $page.url.pathname.toString()
 </script>
 
@@ -18,7 +20,7 @@
                 <h3>Panyucando</h3>
             </a>
             <a href="/login" aria-current={rute === '/login' ? 'page' : undefined}>
-                <h4>Inicio de secion</h4>
+                <h4>Inicio de sesion</h4>
             </a>
             <a href="/login/register" aria-current={rute === '/login/register' ? 'page' : undefined}>
                 <h4>Registro</h4>
@@ -65,10 +67,19 @@
                     <img aria-current="{rute === '/shop/shopping-cart' ? 'page' : undefined}" alt="shop_icon"
                          src="{rute === '/shop/shopping-cart' ? shoppingcart_color_a : shoppingcart}">
                 </a>
-                <a href="/login/profile">
-                    <img aria-current="{rute === '/login/profile' ? 'page' : undefined}" alt="profile_icon"
-                         src="{rute === '/login/profile' ? profile_color_a : profile}">
-                </a>
+                {#if $user.Uid != null}
+    <!-- Si está autenticado, redirige al perfil -->
+    <a href="/login/profile">
+      <img aria-current="{rute === '/login/profile' ? 'page' : undefined}" alt="profile_icon"
+        src="{rute === '/login/profile' ? profile_color_a : profile}">
+    </a>
+  {:else}
+    <!-- Si no está autenticado, redirige a la página de inicio de sesión -->
+    <a href="/login">
+      <img aria-current="{rute === '/login' ? 'page' : undefined}" alt="login_icon"
+        src="{rute === '/login' ?  profile_color_a : profile}">
+    </a>
+  {/if}
             </nav>
         </div>
     </header>

@@ -3,7 +3,7 @@
     import Space from "../../../components/design/space.svelte";
     import Button from "../../../components/Button.svelte";
     import Input from "../../../components/Input.svelte";
-
+    import user from "../../../UserStore.js"
     let edit = true
     let info = 'Valor del elemento'
 </script>
@@ -26,19 +26,19 @@
                     <div class="info">
                         <div class="box">
                             <p class="Bold">Nombre</p>
-                            <p>{info}</p>
+                            <p>{$user.nombre}</p>
                         </div>
                         <div class="box">
                             <p class="Bold">Apellido</p>
-                            <p>{info}</p>
+                            <p>{$user.apellido}</p>
                         </div>
                         <div class="box">
                             <p class="Bold">Telefono</p>
-                            <p>{info}</p>
+                            <p>{$user.telefono}</p>
                         </div>
                         <div class="box">
                             <p class="Bold">Numero de documento</p>
-                            <p>{info}</p>
+                            <p>{$user.n_documento}</p>
                         </div>
                     </div>
                 {:else}

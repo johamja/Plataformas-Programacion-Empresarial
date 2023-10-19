@@ -19,10 +19,10 @@
                 <Header/>
                 <div class="container_1_1">
                     <h1 class="title">Inicio de sesión</h1>
-                    <form action="" method="post">
-                        <Input Label="Correo" variant="Variant1"/>
-                        <Input Label="Contraseña" variant="Variant1"/>
-                        <Button Text="Iniciar" Variant="Variant1"/>
+                    <form action="?/authentication" method="post">
+                        <Input Label="Correo" Name="correo" variant="Variant1"/>
+                        <Input Label="Contraseña" Name="contraseña" variant="Variant1"/>
+                        <Button Type="submit" Text="Iniciar" Variant="Variant1"/>
                         <p>Aun no etas registrado realízalo dando en registro</p>
                         <Button Variant="platform"/>
                     </form>
