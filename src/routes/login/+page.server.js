@@ -28,9 +28,9 @@ export const actions = {
           console.log(userData.nombre)
           user.update(value => ({
             ...value,
-            nombre: userData.nombre,
-            apellido:userData.apellido,
-            rol: userData.rol
+            nombre: userData.user.nombre,
+            apellido:userData.user.apellido,
+            rol: userData.user.rol
           }));
           user.subscribe(value => {
             console.log('Datos actualizados en UserStore:', value);

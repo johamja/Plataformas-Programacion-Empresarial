@@ -67,7 +67,7 @@
                     <img aria-current="{rute === '/shop/shopping-cart' ? 'page' : undefined}" alt="shop_icon"
                          src="{rute === '/shop/shopping-cart' ? shoppingcart_color_a : shoppingcart}">
                 </a>
-                {#if $user.Uid != null}
+                {#if $user.nombre != null}
     <!-- Si está autenticado, redirige al perfil -->
     <a href="/login/profile">
       <img aria-current="{rute === '/login/profile' ? 'page' : undefined}" alt="profile_icon"
