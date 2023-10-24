@@ -6,7 +6,16 @@
     import Header from "../../../components/Header.svelte";
     import Footer from "../../../components/big_size/Footer.svelte";
 
-    
+    const Register = {
+    components: {
+      MediaQuery,
+      Input,
+      Button,
+      Header,
+      Footer
+    },
+    name: 'Register'
+  }
      let responseMessage = ''; // Variable para almacenar la respuesta del servidor
 
 async function register() {

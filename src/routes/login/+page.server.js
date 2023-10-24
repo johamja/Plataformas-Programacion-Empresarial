@@ -25,7 +25,7 @@ export const actions = {
           // Suponiendo que tienes un "store" global llamado "userStore"
           // y que almacenará la información del usuario
           console.log(userData)
-          console.log(userData.nombre)
+          
           user.update(value => ({
             ...value,
             nombre: userData.user.nombre,

@@ -5,6 +5,17 @@
     import Button from "../../components/Button.svelte";
     import Header from "../../components/Header.svelte";
     import Footer from "../../components/big_size/Footer.svelte";
+
+    const Login = {
+    components: {
+      MediaQuery,
+      Input,
+      Button,
+      Header,
+      Footer
+    },
+    name: 'Login'
+  }
 </script>
 
 <svelte:head>
@@ -22,7 +33,7 @@
                     <form action="?/authentication" method="post">
                         <Input Label="Correo" Name="correo" variant="Variant1"/>
                         <Input Label="Contraseña" Name="contraseña" variant="Variant1"/>
-                        <Button Type="submit" Text="Iniciar" Variant="Variant1"/>
+                        <Button Type="submit" Text="Iniciar" Variant="Variant1" />
                         <p>Aun no etas registrado realízalo dando en registro</p>
                         <Button Variant="platform"/>
                     </form>
