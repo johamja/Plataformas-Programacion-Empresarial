@@ -16,17 +16,7 @@
     import {List_BestSellingProduct} from './List_BestSellingProduct.js'
     import {List_NotableFeature} from './List_NotableFeature.js'
     import {List_Information} from './List_Information.js'
-    const Home =  {
-    components: {
-      MediaQuery,
-      Space,
-      BestSellingProduct,
-      NotableFeature,
-      CardInformation
-    },
-    // Rename the component to HomePage
-    name: 'Home'
-  }
+    
    
    
 </script>

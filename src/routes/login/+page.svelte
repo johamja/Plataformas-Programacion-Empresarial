@@ -5,17 +5,10 @@
     import Button from "../../components/Button.svelte";
     import Header from "../../components/Header.svelte";
     import Footer from "../../components/big_size/Footer.svelte";
+    import user from '../../UserStore.js'
 
-    const Login = {
-    components: {
-      MediaQuery,
-      Input,
-      Button,
-      Header,
-      Footer
-    },
-    name: 'Login'
-  }
+    
+   
 </script>
 
 <svelte:head>

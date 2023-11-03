@@ -6,16 +6,7 @@
     import Header from "../../../components/Header.svelte";
     import Footer from "../../../components/big_size/Footer.svelte";
 
-    const Register = {
-    components: {
-      MediaQuery,
-      Input,
-      Button,
-      Header,
-      Footer
-    },
-    name: 'Register'
-  }
+  
      let responseMessage = ''; // Variable para almacenar la respuesta del servidor
 
 async function register() {
@@ -36,7 +27,7 @@ async function register() {
                 <Header/>
                 <div class="container_1_1">
                     <h1 class="title">Registrarme</h1>
-                    <form action="?/not_authenticated" method="post">
+                    <form action="?/registrar" method="post">
                         <Input Name="Nombre" Label="Nombre" variant="Variant1"/>
                         <Input Name="Apellido"  Label="Apellido" variant="Variant1"/>
                         <Input Name= "Correo" Label="Correo" variant="Variant1" Type="text" />

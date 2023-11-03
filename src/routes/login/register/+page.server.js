@@ -3,7 +3,7 @@
 export const actions = {
 
 
-    not_authenticated: async ({ cookies, request }) => {
+    registrar: async ({ cookies, request }) => {
         try {
             const data = await request.formData();
             const name = data.get('Nombre');
