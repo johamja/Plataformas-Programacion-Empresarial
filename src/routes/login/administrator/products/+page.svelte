@@ -1,48 +1,78 @@
 <script>
-    import MediaQuery from 'svelte-media-query'
+    import MediaQuery from "svelte-media-query";
 
     import Button from "../../../../components/Button.svelte";
     import Product from "../../../../components/Product.svelte";
-    import {List_Products} from './List_Products.js'
+    import { List_Products } from "./List_Products.js";
     import Space from "../../../../components/design/space.svelte";
     import Input from "../../../../components/Input.svelte";
+    import { scale } from "svelte/transition";
 
-    let showModal = false
-    let dialog // HTMLDialogElement
-    $: if (dialog && showModal) dialog.showModal()
+    /**
+     * @type {any[]}
+     */
+    let documentos = [];
+
+    async function obtenerDocumentos() {
+        try {
+            const response = await fetch(
+                "http://localhost:3000/inventory/get-products"
+            );
+            if (response.ok) {
+                documentos = await response.json();
+            } else {
+                console.error("Error al obtener documentos");
+            }
+        } catch (error) {
+            console.error("Error al obtener documentos:", error);
+        }
+    }
+
+    obtenerDocumentos();
+
+    let showModal = false;
+    let dialog; // HTMLDialogElement
+    $: if (dialog && showModal) dialog.showModal();
 </script>
 
 <svelte:head>
     <title>Products</title>
-    <meta content="Description" name="description"/>
+    <meta content="Description" name="description" />
 </svelte:head>
 
 <!--Desktop-->
 <MediaQuery let:matches query="(min-width: 1440px)">
     {#if matches}
-        <Space/>
+        <Space />
         <div class="container_1">
             <h2>Productos</h2>
-            <Button Variant="Variant2" Text="Añadir producto" Function="{() => (dialog.showModal())}"/>
-            <dialog bind:this={dialog}
-                    on:close={() => (showModal = false)}>
+            <Button
+                Variant="Variant2"
+                Text="Añadir producto"
+                Function={() => dialog.showModal()}
+            />
+            <dialog bind:this={dialog} on:close={() => (showModal = false)}>
                 <div class="header">
                     <h2>Insertar un nuevo producto</h2>
                     <button class="button">Subir imagen</button>
                 </div>
                 <form>
-                    <Input Label="Nombre" variant="Variant3"/>
-                    <Input Label="Precio" variant="Variant3"/>
-                    <Input Label="Descripción" variant="Variant3"/>
+                    <Input Label="Nombre" variant="Variant3" />
+                    <Input Label="Precio" variant="Variant3" />
+                    <Input Label="Descripción" variant="Variant3" />
                     <div class="buttons">
-                        <button class="button" id="close" on:click={() => dialog.close()}>Cancelar</button>
+                        <button
+                            class="button"
+                            id="close"
+                            on:click={() => dialog.close()}>Cancelar</button
+                        >
                         <button class="button">Añadir</button>
                     </div>
                 </form>
             </dialog>
             <div class="list">
-                {#each List_Products as item}
-                    <Product Variant="CRUD" Item="{item}"/>
+                {#each documentos as item}
+                    <Product Variant="CRUD" Item={item} />
                 {/each}
             </div>
         </div>
@@ -79,6 +109,11 @@
                         height: 45px;
                     }
 
+                    & .button:hover {
+                        transform: scale(1.02);
+                        transition: 0.1s;
+                    }
+
                     & .header {
                         display: flex;
                         flex-direction: column;
@@ -109,16 +144,12 @@
 
 <MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
     {#if matches}
-        <div class="root tablet">
-            tablet
-        </div>
+        <div class="root tablet">tablet</div>
     {/if}
 </MediaQuery>
 
 <MediaQuery let:matches query="(max-width: 1439px) and (min-width: 768px)">
     {#if matches}
-        <div class="root tablet">
-            teléfono
-        </div>
+        <div class="root tablet">teléfono</div>
     {/if}
 </MediaQuery>
